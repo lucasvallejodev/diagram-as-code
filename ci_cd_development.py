@@ -5,7 +5,7 @@ from diagrams.custom import Custom
 from diagrams.programming.language import Javascript
 
 with Diagram("", show=False):
-    with Cluster("Back-end"):
+    with Cluster("Application"):
       server = Custom("Server", "./res/server.png")
 
     with Cluster("Development"):
@@ -17,9 +17,5 @@ with Diagram("", show=False):
           deploy = Custom("Automated Deploy", "./res/deploy.png")
           test = Custom("Automated Test", "./res/test.png")
 
-    dev >> git
-    git >> rack
-    rack >> binaries
-    binaries >> deploy
-    deploy >> test
+    dev >> git >> rack >> binaries >> deploy >> test
     deploy >> server
